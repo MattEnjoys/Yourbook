@@ -15,6 +15,11 @@ class Exemplaire
     #[ORM\Column]
     private ?int $id = null;
 
+    public function __toString()
+    {
+        return $this->getId() . ' - ' . $this->getLivre();
+    }
+
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Usure $usure = null;

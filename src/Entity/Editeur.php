@@ -13,6 +13,11 @@ class Editeur
     #[ORM\Column]
     private ?int $id = null;
 
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 

@@ -3,10 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Genre;
+use App\Entity\Livre;
 use App\Entity\Stock;
 use App\Entity\Usure;
 use App\Entity\Auteur;
 use App\Entity\Editeur;
+use App\Entity\Emprunt;
+use App\Entity\Adherent;
+use App\Entity\Exemplaire;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -49,10 +53,14 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Genre', 'fas fa-list', Genre::class);
+        yield MenuItem::linkToCrud('Genre', 'fas fa-tags', Genre::class);
         yield MenuItem::linkToCrud('Editeur', 'fas fa-list', Editeur::class);
-        yield MenuItem::linkToCrud('Auteur', 'fas fa-list', Auteur::class);
+        yield MenuItem::linkToCrud('Auteur', 'fas fa-users', Auteur::class);
         yield MenuItem::linkToCrud('Usure', 'fas fa-list', Usure::class);
         yield MenuItem::linkToCrud('Stock', 'fas fa-list', Stock::class);
+        yield MenuItem::linkToCrud('Livre', 'fas fa-book', Livre::class);
+        yield MenuItem::linkToCrud('Exemplaire', 'fas fa-book', Exemplaire::class);
+        yield MenuItem::linkToCrud('Emprunt', 'fas fa-book', Emprunt::class);
+        yield MenuItem::linkToCrud('Adherent', 'fas fa-book', Adherent::class);
     }
 }
