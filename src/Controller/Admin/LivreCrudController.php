@@ -6,6 +6,7 @@ use App\Entity\Livre;
 use phpDocumentor\Reflection\Types\Boolean;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -28,7 +29,9 @@ class LivreCrudController extends AbstractCrudController
 
         yield BooleanField::new('archive');
 
-        yield TextareaField::new('imageFile')->setFormType(VichImageType::class);
+        yield TextareaField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex();
+
+        yield ImageField::new('imageName')->setBasePath('/images/livres')->hideOnForm();
 
         yield AssociationField::new('auteur');
         yield AssociationField::new('editeur');
